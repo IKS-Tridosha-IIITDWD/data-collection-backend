@@ -15,6 +15,7 @@ router.post(
     {name: 'uu_low_pitch', maxCount: 1},
     {name: 'uu_medium_pitch', maxCount: 1},
     {name: 'uu_high_pitch', maxCount: 1},
+    {name: 'one_min_audio', maxCount: 1},
   ]),
   audioDataController.createAudioData
 );
@@ -33,6 +34,7 @@ router.put(
     {name: 'uu_low_pitch', maxCount: 1},
     {name: 'uu_medium_pitch', maxCount: 1},
     {name: 'uu_high_pitch', maxCount: 1},
+    {name: 'one_min_audio', maxCount: 1},
   ]),
   audioDataController.updateAudioData
 );

@@ -12,6 +12,7 @@ const audioKeys = [
   'uu_low_pitch',
   'uu_medium_pitch',
   'uu_high_pitch',
+  'one_min_audio',
 ];
 
 const createAudioData = catchAsync(async (req, res) => {
@@ -20,17 +21,25 @@ const createAudioData = catchAsync(async (req, res) => {
   const existingAudioData = await audioDataService.getAudioData(userId);
 
   const audioData = {};
+  console.log(audioFiles);
 
-  for (const name in audioKeys) {
-    const audioFile = await fileUploadService.s3Upload(audioFiles[name][0], name);
+  for (const name of audioKeys) {
+    // if (audioFiles[name] && Array.isArray(audioFiles[name][0]) && audioFiles[name]) {
+    console.log(name);
+    const audioFile = await fileUploadService.s3Upload(audioFiles[name], name);
+    console.log('s3Upload function call for', name);
+    console.log(audioFile);
     audioData[name] = {
-      key: audioFile[0].key,
-      url: audioFile[0].url,
+      key: audioFile.key,
+      url: audioFile.url,
     };
+    // } else {
+    // console.log(`File not found for key: ${name}`);
+    // }
   }
 
   if (existingAudioData) {
-    for (const name in audioKeys) {
+    for (const name of audioKeys) {
       const oldKey = existingAudioData[name].key;
       // eslint-disable-next-line no-unused-vars
       await fileUploadService.s3Delete(oldKey).catch(err => console.log('Failed to delete old audio file', oldKey));

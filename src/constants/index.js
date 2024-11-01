@@ -25,21 +25,52 @@ const docTypeToExtension = {
   'application/vnd.openxmlformats-officedocument.presentationml.presentation': 'pptx',
 };
 
+const audioTypeToExtension = {
+  'audio/mpeg': 'mp3',
+  'audio/wav': 'wav',
+  'audio/x-wav': 'wav',
+  'audio/wave': 'wav',
+  'audio/mp4': 'm4a',
+  'audio/x-m4a': 'm4a',
+  'audio/ogg': 'ogg',
+  'audio/webm': 'webm',
+  'audio/flac': 'flac',
+  'audio/aac': 'aac',
+  'audio/x-aac': 'aac',
+};
+
+const videoTypeToExtension = {
+  'video/mp4': 'mp4',
+  'video/x-msvideo': 'avi',
+  'video/ogg': 'ogv',
+  'video/webm': 'webm',
+  'video/quicktime': 'mov',
+  'video/x-matroska': 'mkv',
+};
+
 const mimetypeToExtension = {
   ...imgTypeToExtension,
   ...docTypeToExtension,
+  ...audioTypeToExtension,
+  ...videoTypeToExtension,
 };
 
 const imageTypes = Object.keys(imgTypeToExtension);
 const docTypes = Object.keys(docTypeToExtension);
-const fileTypes = [...imageTypes, ...docTypes];
+const audioTypes = Object.keys(audioTypeToExtension);
+const videoTypes = Object.keys(videoTypeToExtension);
+const fileTypes = [...imageTypes, ...docTypes, ...audioTypes, ...videoTypes];
 
 module.exports = {
   dbOptions,
   imageTypes,
   docTypes,
+  audioTypes,
+  videoTypes,
   fileTypes,
   imgTypeToExtension,
   docTypeToExtension,
-  mimetypeToExtension 
-}
+  audioTypeToExtension,
+  videoTypeToExtension,
+  mimetypeToExtension,
+};

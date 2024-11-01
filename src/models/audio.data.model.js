@@ -97,6 +97,16 @@ const audioDataSchema = {
       required: true,
     },
   },
+  one_min_audio: {
+    key: {
+      type: String,
+      required: true,
+    },
+    url: {
+      type: String,
+      required: true,
+    },
+  },
 };
 
 module.exports = mongoose.model('AudioData', new Schema(audioDataSchema));
