@@ -20,18 +20,20 @@ const createAudioData = catchAsync(async (req, res) => {
   const audioFiles = req.files;
   const existingAudioData = await audioDataService.getAudioData(userId);
 
-  const audioData = {};
-  console.log(audioFiles);
+  const audioData = {userId};
+  // console.log(userId);
+  // console.log(audioFiles);
+  console.log(existingAudioData);
 
   for (const name of audioKeys) {
     // if (audioFiles[name] && Array.isArray(audioFiles[name][0]) && audioFiles[name]) {
-    console.log(name);
+    // console.log(name);
     const audioFile = await fileUploadService.s3Upload(audioFiles[name], name);
-    console.log('s3Upload function call for', name);
-    console.log(audioFile);
+    // console.log('s3Upload function call for', name);
+    // console.log(audioFile);
     audioData[name] = {
-      key: audioFile.key,
-      url: audioFile.url,
+      key: audioFile[0].key,
+      url: audioFile[0].url,
     };
     // } else {
     // console.log(`File not found for key: ${name}`);
@@ -43,13 +45,13 @@ const createAudioData = catchAsync(async (req, res) => {
       const oldKey = existingAudioData[name].key;
       // eslint-disable-next-line no-unused-vars
       await fileUploadService.s3Delete(oldKey).catch(err => console.log('Failed to delete old audio file', oldKey));
-      const updatedAudioData = await audioDataService.updateAudioData(userId, audioData);
-      res.status(200).json(updatedAudioData);
     }
+    const updatedAudioData = await audioDataService.updateAudioData(userId, audioData);
+    return res.status(200).json(updatedAudioData);
   }
 
   const newAudioData = await audioDataService.createAudioData(audioData);
-  res.status(201).json(newAudioData);
+  return res.status(201).json(newAudioData);
 });
 
 const getAudioData = catchAsync(async (req, res) => {
@@ -63,7 +65,7 @@ const updateAudioData = catchAsync(async (req, res) => {
   const audioFiles = req.files;
   const existingAudioData = await audioDataService.getAudioData(userId);
 
-  const audioData = {};
+  const audioData = {userId};
 
   for (const name in audioKeys) {
     const audioFile = await fileUploadService.s3Upload(audioFiles[name][0], name);
