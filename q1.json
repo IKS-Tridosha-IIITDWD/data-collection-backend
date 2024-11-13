@@ -1,0 +1,190 @@
+{
+  "title": "Body Type Questionnaire",
+  "questions": [
+    {
+      "text": "Body Type",
+      "options": [
+        {"optionText": "Lean / Thin body - long and narrow", "mapping": "Vaata"},
+        {"optionText": "Well-built, solid body - moderately developed physique, and proportional", "mapping": "Pitta"},
+        {"optionText": "Plump, slight obese, robust body - bigger bones, broad shoulders and hips", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Limbs and Joints",
+      "options": [
+        {"optionText": "Small, thin, cold, cracking", "mapping": "Vaata"},
+        {"optionText": "Medium, soft, loose", "mapping": "Pitta"},
+        {"optionText": "Large, thick, well-built, lubricated", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Appearance of Veins",
+      "options": [
+        {
+          "optionText": "Many Veins Prominent - veins are very visible and prominent due to thin skin",
+          "mapping": "Vaata"
+        },
+        {
+          "optionText": "Moderately Visible Veins - veins are moderately visible, especially during physical activity",
+          "mapping": "Pitta"
+        },
+        {"optionText": "Less Visible Veins - veins are less visible due to thicker skin", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Eye Characteristics",
+      "options": [
+        {"optionText": "Looks like a half-awake", "mapping": "Vaata"},
+        {"optionText": "Red eyes, sharp, bright, sensitive to light", "mapping": "Pitta"},
+        {"optionText": "White eyes and big", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Teeth Characteristics",
+      "options": [
+        {"optionText": "Medium, sensitive gums that bleed easily", "mapping": "Vaata"},
+        {"optionText": "Small, may protrude, thin gums, tend to recede", "mapping": "Pitta"},
+        {"optionText": "Light pink, thick, strong gums", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Skin Characteristics",
+      "options": [
+        {"optionText": "Dry Skin - rough, flaky, and lacks moisture", "mapping": "Vaata"},
+        {"optionText": "Warm Skin - smooth with a natural glow", "mapping": "Pitta"},
+        {
+          "optionText": "Moist Skin, Sweats Easily - moist and smooth, with a tendency to sweat more",
+          "mapping": "Kapha"
+        }
+      ]
+    },
+    {
+      "text": "Hair Characteristics",
+      "options": [
+        {"optionText": "Rough Hair - dry, coarse, and brittle", "mapping": "Vaata"},
+        {"optionText": "Sparse Hair - thin and less dense", "mapping": "Pitta"},
+        {"optionText": "Thick Hair - dense, full-bodied, and well-lubricated", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Nails Characteristics",
+      "options": [
+        {"optionText": "Rough and thin nails", "mapping": "Vaata"},
+        {"optionText": "Smooth and thin nails", "mapping": "Pitta"},
+        {"optionText": "Low nail growth, thick, smooth nails", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Voice Characteristics",
+      "options": [
+        {"optionText": "Talkative, fast", "mapping": "Vaata"},
+        {"optionText": "Clear cut and moderate talking", "mapping": "Pitta"},
+        {"optionText": "Smooth and slow voice", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Appetite",
+      "options": [
+        {"optionText": "Irregular appetite", "mapping": "Vaata"},
+        {"optionText": "Strong appetite", "mapping": "Pitta"},
+        {"optionText": "Low appetite", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Thirst",
+      "options": [
+        {"optionText": "Intense thirst", "mapping": "Vaata"},
+        {"optionText": "Low thirst", "mapping": "Pitta"},
+        {"optionText": "Sometimes thirsty, sometimes forget to drink", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Gait/manner of walking",
+      "options": [
+        {"optionText": "Light, fast movement", "mapping": "Vaata"},
+        {"optionText": "Moderate and required movement", "mapping": "Pitta"},
+        {"optionText": "Slow movement", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Bowel Movements",
+      "options": [
+        {"optionText": "Irregular bowel movements", "mapping": "Vaata"},
+        {"optionText": "Soft bowel movements", "mapping": "Pitta"},
+        {"optionText": "Medium bowel movements", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Sleep Pattern",
+      "options": [
+        {"optionText": "Light sleeper - irregular, light, tends towards insomnia", "mapping": "Vaata"},
+        {"optionText": "Medium sleep - moderate, may wake up but will fall asleep again", "mapping": "Pitta"},
+        {"optionText": "Heavy sleeper - deep, prolonged, difficulty waking up", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Strength",
+      "options": [
+        {"optionText": "Low strength", "mapping": "Vaata"},
+        {"optionText": "Medium strength", "mapping": "Pitta"},
+        {"optionText": "High strength", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Taste Preference",
+      "options": [
+        {"optionText": "Warm, sweet, sour, salty", "mapping": "Vaata"},
+        {"optionText": "Cold, sweet, bitter, pungent", "mapping": "Pitta"},
+        {"optionText": "Hot, pungent, bitter", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Mind Characteristics",
+      "options": [
+        {"optionText": "Restless and curious mind, open to unconventional ideas", "mapping": "Vaata"},
+        {"optionText": "Sharp, analytical mind, driven by a desire for knowledge", "mapping": "Pitta"},
+        {"optionText": "Calm, stable, and loyal mind, with a deep sense of commitment", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Emotional Stability",
+      "options": [
+        {"optionText": "Unstable mind", "mapping": "Vaata"},
+        {"optionText": "Emotional, caring", "mapping": "Pitta"},
+        {"optionText": "Firm", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Memory",
+      "options": [
+        {"optionText": "Easily forgets", "mapping": "Vaata"},
+        {"optionText": "Excellent memory", "mapping": "Pitta"},
+        {"optionText": "Good memory but sometimes forget", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Reaction to Anger",
+      "options": [
+        {"optionText": "Quick to anger - anger arises quickly and impulsively", "mapping": "Vaata"},
+        {"optionText": "Quick to start, intense anger", "mapping": "Pitta"},
+        {"optionText": "Calm and patient", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Competitiveness",
+      "options": [
+        {"optionText": "Moderate envious, jealous", "mapping": "Vaata"},
+        {"optionText": "Stubborn, can’t forgive", "mapping": "Pitta"},
+        {"optionText": "Able to bear stress", "mapping": "Kapha"}
+      ]
+    },
+    {
+      "text": "Talkativeness",
+      "options": [
+        {"optionText": "Talks a lot, speaks quickly", "mapping": "Vaata"},
+        {"optionText": "Stubborn, likes to convince, can be argumentative", "mapping": "Pitta"},
+        {"optionText": "Peaceful, speaks slowly when I do", "mapping": "Kapha"}
+      ]
+    }
+  ]
+}

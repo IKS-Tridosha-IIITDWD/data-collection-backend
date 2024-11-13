@@ -6,7 +6,7 @@ const login = catchAsync(async (req, res) => {
 
   const demographics = await userDemographicsService.getDemographicsByEmail(email);
   if (!demographics) {
-    res.status(404).json({message: 'User not found'});
+    return res.status(404).json({message: 'User not found'});
   }
 
   res.status(200).json(demographics);
