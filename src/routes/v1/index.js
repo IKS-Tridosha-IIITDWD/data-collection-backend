@@ -8,6 +8,7 @@ const userDemographicsRoute = require('./user.demographics.route');
 const audioDataRoute = require('./audio.data.route');
 const ppgReadingDataRoute = require('./ppg.reading.data.route');
 const authRoute = require('./auth.route');
+const imageRoute = require('./image.data.route');
 
 router.use('/questionnaire', questionnaireRoute);
 router.use('/questionnaire-one-answer', questionnaireOneAnswerRoute);
@@ -16,5 +17,6 @@ router.use('/user-demographics', userDemographicsRoute);
 router.use('/audio', audioDataRoute);
 router.use('/ppg', ppgReadingDataRoute);
 router.use('/auth', authRoute);
+router.use('/image', imageRoute);
 
 module.exports = router;

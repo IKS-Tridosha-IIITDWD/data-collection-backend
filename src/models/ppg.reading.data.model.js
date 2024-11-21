@@ -7,64 +7,52 @@ const ppgReadingDataSchema = new Schema({
     ref: 'Demographics',
     required: true,
   },
-  sixty_seconds: {
+  sixtySeconds: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
-  index_finger: {
+  indexFinger: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
-  middle_finger: {
+  middleFinger: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
-  ring_finger: {
+  ringFinger: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
-  little_finger: {
+  littleFinger: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
   thumb: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
 });

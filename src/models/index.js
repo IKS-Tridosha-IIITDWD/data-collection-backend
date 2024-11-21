@@ -6,6 +6,7 @@ const questionnaireTwoAnswerModel = require('./questionnaire.two.answer.model');
 const audioDataModel = require('./audio.data.model');
 const videoDataModel = require('./video.data.model');
 const ppgReadingDataModel = require('./ppg.reading.data.model');
+const imageDataModel = require('./image.data.model');
 
 module.exports = {
   userDemographicsModel,
@@ -16,4 +17,5 @@ module.exports = {
   audioDataModel,
   videoDataModel,
   ppgReadingDataModel,
+  imageDataModel,
 };

@@ -1,8 +1,8 @@
 const {fileUploadService} = require('../microservices');
-const {ppgReadingDataService} = require('../services');
+const {imageDataService} = require('../services');
 const catchAsync = require('../utils/catchAsync');
 
-const readingKeys = ['sixtySeconds', 'indexFinger', 'middleFinger', 'ringFinger', 'littleFinger', 'thumb'];
+const readingKeys = ['face_image', 'eyes_image', 'tongue_image'];
 
 // Helper function to handle the upload and data update
 const handleFileUploadAndUpdate = async (userId, readingFile, readingKey) => {
@@ -13,7 +13,7 @@ const handleFileUploadAndUpdate = async (userId, readingFile, readingKey) => {
     url: uploadedFile[0].url,
   };
 
-  const existingReadingData = await ppgReadingDataService.getPPGData(userId);
+  const existingReadingData = await imageDataService.getImageData(userId);
   if (existingReadingData) {
     const oldKey = existingReadingData[readingKey]?.key;
     if (oldKey) {
@@ -21,11 +21,11 @@ const handleFileUploadAndUpdate = async (userId, readingFile, readingKey) => {
         .s3Delete(oldKey)
         .catch(() => console.log(`Failed to delete old ${readingKey} file`, oldKey));
     }
-    const updatedReadingData = await ppgReadingDataService.updatePPGData(userId, readingData);
+    const updatedReadingData = await imageDataService.updateImageData(userId, readingData);
     return updatedReadingData;
   }
 
-  const newReadingData = await ppgReadingDataService.createPPGData({userId, ...readingData});
+  const newReadingData = await imageDataService.createImageData({userId, ...readingData});
   return newReadingData;
 };
 
@@ -51,7 +51,7 @@ const getReadingDataForKey = catchAsync(async (req, res) => {
     return res.status(400).json({message: 'Invalid reading key'});
   }
 
-  const readingData = await ppgReadingDataService.getPPGData(userId);
+  const readingData = await imageDataService.getImageData(userId);
   res.status(200).json(readingData ? readingData[readingKey] : null);
 });
 

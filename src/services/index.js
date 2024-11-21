@@ -5,3 +5,4 @@ module.exports.questionnaireTwoAnswerService = require('./questionnaire.two.answ
 module.exports.audioDataService = require('./audio.data.service');
 module.exports.videoDataService = require('./video.data.service.js');
 module.exports.ppgReadingDataService = require('./ppg.reading.data.service');
+module.exports.imageDataService = require('./image.data.service');

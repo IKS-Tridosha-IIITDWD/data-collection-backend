@@ -7,16 +7,6 @@ const videoDataSchema = {
     ref: 'Demographics',
     required: true,
   },
-  face_video: {
-    key: {
-      type: String,
-      required: false,
-    },
-    url: {
-      type: String,
-      required: false,
-    },
-  },
   full_body_video: {
     key: {
       type: String,
@@ -27,7 +17,6 @@ const videoDataSchema = {
       required: false,
     },
   },
-  
 };
 
 module.exports = mongoose.model('VideoData', new Schema(videoDataSchema));

@@ -1,23 +1,23 @@
 const express = require('express');
 const {fileUploadService} = require('../../microservices');
-const {ppgReadingDataController} = require('../../controllers');
+const {imageDataController} = require('../../controllers');
 const router = express.Router();
 
 // Create reading data for a specific reading key (e.g., `sixty_seconds`, `index_finger`, etc.)
 router.post(
-  '/user/:readingKey',
+  '/:readingKey',
   fileUploadService.multerUpload.fields([{name: 'file', maxCount: 1}]),
-  ppgReadingDataController.createReadingDataForKey
+  imageDataController.createReadingDataForKey
 );
 
 // Get reading data for a specific reading key (e.g., `sixty_seconds`, `index_finger`, etc.)
-router.get('/:userId/:readingKey', ppgReadingDataController.getReadingDataForKey);
+router.get('/:userId/:readingKey', imageDataController.getReadingDataForKey);
 
 // Update reading data for a specific reading key (e.g., `sixty_seconds`, `index_finger`, etc.)
 router.put(
   '/:userId/:readingKey',
   fileUploadService.multerUpload.single('file'),
-  ppgReadingDataController.updateReadingDataForKey
+  imageDataController.updateReadingDataForKey
 );
 
 module.exports = router;

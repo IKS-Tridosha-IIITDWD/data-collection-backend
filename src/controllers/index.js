@@ -6,3 +6,4 @@ module.exports.audioDataController = require('./audio.data.controller');
 module.exports.videoDataController = require('./video.data.controller');
 module.exports.ppgReadingDataController = require('./ppg.reading.data.controller');
 module.exports.authController = require('./auth.controller');
+module.exports.imageDataController = require('./image.data.controller');

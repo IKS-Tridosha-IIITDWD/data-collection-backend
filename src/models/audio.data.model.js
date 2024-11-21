@@ -10,101 +10,81 @@ const audioDataSchema = {
   aa_low_pitch: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
   aa_medium_pitch: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
   aa_high_pitch: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
   ee_low_pitch: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
   ee_medium_pitch: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
   ee_high_pitch: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
   uu_low_pitch: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
   uu_medium_pitch: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
   uu_high_pitch: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
   one_min_audio: {
     key: {
       type: String,
-      required: true,
     },
     url: {
       type: String,
-      required: true,
     },
   },
 };
