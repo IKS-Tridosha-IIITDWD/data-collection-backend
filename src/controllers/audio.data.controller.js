@@ -2,7 +2,7 @@ const {fileUploadService} = require('../microservices');
 const {audioDataService} = require('../services');
 const catchAsync = require('../utils/catchAsync');
 
-const audioKeys = [
+const readingKeys = [
   'aa_low_pitch',
   'aa_medium_pitch',
   'aa_high_pitch',
@@ -15,74 +15,66 @@ const audioKeys = [
   'one_min_audio',
 ];
 
-const createAudioData = catchAsync(async (req, res) => {
-  const {userId} = req.body;
-  const audioFiles = req.files;
-  const existingAudioData = await audioDataService.getAudioData(userId);
+// Helper function to handle the upload and data update
+const handleFileUploadAndUpdate = async (userId, readingFile, readingKey) => {
+  const readingData = {};
+  const uploadedFile = await fileUploadService.s3Upload([readingFile], readingKey);
+  readingData[readingKey] = {
+    key: uploadedFile[0].key,
+    url: uploadedFile[0].url,
+  };
 
-  const audioData = {userId};
-  // console.log(userId);
-  // console.log(audioFiles);
-  console.log(existingAudioData);
-
-  for (const name of audioKeys) {
-    // if (audioFiles[name] && Array.isArray(audioFiles[name][0]) && audioFiles[name]) {
-    // console.log(name);
-    const audioFile = await fileUploadService.s3Upload(audioFiles[name], name);
-    // console.log('s3Upload function call for', name);
-    // console.log(audioFile);
-    audioData[name] = {
-      key: audioFile[0].key,
-      url: audioFile[0].url,
-    };
-    // } else {
-    // console.log(`File not found for key: ${name}`);
-    // }
-  }
-
-  if (existingAudioData) {
-    for (const name of audioKeys) {
-      const oldKey = existingAudioData[name].key;
-      // eslint-disable-next-line no-unused-vars
-      await fileUploadService.s3Delete(oldKey).catch(err => console.log('Failed to delete old audio file', oldKey));
+  const existingReadingData = await audioDataService.getAudioData(userId);
+  if (existingReadingData) {
+    const oldKey = existingReadingData[readingKey]?.key;
+    if (oldKey) {
+      await fileUploadService
+        .s3Delete(oldKey)
+        .catch(() => console.log(`Failed to delete old ${readingKey} file`, oldKey));
     }
-    const updatedAudioData = await audioDataService.updateAudioData(userId, audioData);
-    return res.status(200).json(updatedAudioData);
+    const updatedReadingData = await audioDataService.updateAudioData(userId, readingData);
+    return updatedReadingData;
   }
 
-  const newAudioData = await audioDataService.createAudioData(audioData);
-  return res.status(201).json(newAudioData);
+  const newReadingData = await audioDataService.createAudioData({userId, ...readingData});
+  return newReadingData;
+};
+
+const createAudioData = catchAsync(async (req, res) => {
+  const {userId, readingKey} = req.body;
+  const readingFile = req.files['file'][0];
+
+  if (!readingKeys.includes(readingKey)) {
+    return res.status(400).json({message: 'Invalid reading key'});
+  }
+
+  const readingData = await handleFileUploadAndUpdate(userId, readingFile, readingKey);
+  res.status(201).json(readingData);
 });
 
+// Get specific reading data for a user and specific key
 const getAudioData = catchAsync(async (req, res) => {
-  const {userId} = req.params;
-  const audioData = await audioDataService.getAudioData(userId);
-  res.status(200).json(audioData);
+  const {userId, readingKey} = req.params;
+
+  if (!readingKeys.includes(readingKey)) {
+    return res.status(400).json({message: 'Invalid reading key'});
+  }
+
+  const readingData = await audioDataService.getAudioData(userId);
+  res.status(200).json(readingData ? readingData[readingKey] : null);
 });
 
+// Update specific reading data for a given user and reading key
 const updateAudioData = catchAsync(async (req, res) => {
-  const {userId} = req.params;
-  const audioFiles = req.files;
-  const existingAudioData = await audioDataService.getAudioData(userId);
+  const {userId, readingKey} = req.params; // expect `readingKey` in the URL params
+  const readingFile = req.files[readingKey][0];
 
-  const audioData = {userId};
-
-  for (const name in audioKeys) {
-    const audioFile = await fileUploadService.s3Upload(audioFiles[name][0], name);
-    audioData[name] = {
-      key: audioFile[0].key,
-      url: audioFile[0].url,
-    };
+  if (!readingKeys.includes(readingKey)) {
+    return res.status(400).json({message: 'Invalid reading key'});
   }
 
-  for (const name in audioKeys) {
-    const oldKey = existingAudioData[name].key;
-    // eslint-disable-next-line no-unused-vars
-    await fileUploadService.s3Delete(oldKey).catch(err => console.log('Failed to delete old audio file', oldKey));
-  }
-
-  const updatedAudioData = await audioDataService.updateAudioData(userId, audioData);
-  res.status(200).json(updatedAudioData);
+  const updatedReadingData = await handleFileUploadAndUpdate(userId, readingFile, readingKey);
+  res.status(200).json(updatedReadingData);
 });
 
 module.exports = {

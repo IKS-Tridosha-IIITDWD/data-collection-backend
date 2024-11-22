@@ -5,10 +5,7 @@ const router = express.Router();
 
 router.post(
   '/',
-  fileUploadService.multerUpload.fields([
-    {name: 'face_video', maxCount: 1},
-    {name: 'full_body_video', maxCount: 1},
-  ]),
+  fileUploadService.multerUpload.fields([{name: 'file', maxCount: 1}]),
   videoDataController.createVideoData
 );
 
@@ -16,10 +13,7 @@ router.get('/:id', videoDataController.getVideoData);
 
 router.put(
   '/:id',
-  fileUploadService.multerUpload.fields([
-    {name: 'face_video', maxCount: 1},
-    {name: 'full_body_video', maxCount: 1},
-  ]),
+  fileUploadService.multerUpload.fields([{name: 'file', maxCount: 1}]),
   videoDataController.updateVideoData
 );
 

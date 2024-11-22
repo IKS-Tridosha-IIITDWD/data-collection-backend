@@ -14,12 +14,18 @@ const ppgReadingDataSchema = new Schema({
     url: {
       type: String,
     },
+    manual_reading: {
+      type: String,
+    },
   },
   indexFinger: {
     key: {
       type: String,
     },
     url: {
+      type: String,
+    },
+    manual_reading: {
       type: String,
     },
   },
@@ -30,12 +36,18 @@ const ppgReadingDataSchema = new Schema({
     url: {
       type: String,
     },
+    manual_reading: {
+      type: String,
+    },
   },
   ringFinger: {
     key: {
       type: String,
     },
     url: {
+      type: String,
+    },
+    manual_reading: {
       type: String,
     },
   },
@@ -46,12 +58,18 @@ const ppgReadingDataSchema = new Schema({
     url: {
       type: String,
     },
+    manual_reading: {
+      type: String,
+    },
   },
   thumb: {
     key: {
       type: String,
     },
     url: {
+      type: String,
+    },
+    manual_reading: {
       type: String,
     },
   },

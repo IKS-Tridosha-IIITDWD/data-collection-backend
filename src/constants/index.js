@@ -46,6 +46,7 @@ const videoTypeToExtension = {
   'video/webm': 'webm',
   'video/quicktime': 'mov',
   'video/x-matroska': 'mkv',
+  'application/octet-stream': 'mp4',
 };
 
 const mimetypeToExtension = {

@@ -5,12 +5,13 @@ const catchAsync = require('../utils/catchAsync');
 const readingKeys = ['sixtySeconds', 'indexFinger', 'middleFinger', 'ringFinger', 'littleFinger', 'thumb'];
 
 // Helper function to handle the upload and data update
-const handleFileUploadAndUpdate = async (userId, readingFile, readingKey) => {
+const handleFileUploadAndUpdate = async (userId, readingFile, readingKey, manual_reading) => {
   const readingData = {};
   const uploadedFile = await fileUploadService.s3Upload([readingFile], readingKey);
   readingData[readingKey] = {
     key: uploadedFile[0].key,
     url: uploadedFile[0].url,
+    manual_reading,
   };
 
   const existingReadingData = await ppgReadingDataService.getPPGData(userId);
@@ -32,14 +33,14 @@ const handleFileUploadAndUpdate = async (userId, readingFile, readingKey) => {
 // Create reading data for a specific finger or sixty_seconds
 const createReadingDataForKey = catchAsync(async (req, res) => {
   const {readingKey} = req.params; // expect `readingKey` in the URL params
-  const {userId} = req.body;
+  const {userId, manual_reading} = req.body;
   const readingFile = req.files['file'][0];
 
   if (!readingKeys.includes(readingKey)) {
     return res.status(400).json({message: 'Invalid reading key'});
   }
 
-  const readingData = await handleFileUploadAndUpdate(userId, readingFile, readingKey);
+  const readingData = await handleFileUploadAndUpdate(userId, readingFile, readingKey, manual_reading);
   res.status(201).json(readingData);
 });
 
