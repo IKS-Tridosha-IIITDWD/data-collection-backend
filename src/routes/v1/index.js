@@ -10,6 +10,7 @@ const ppgReadingDataRoute = require('./ppg.reading.data.route');
 const authRoute = require('./auth.route');
 const imageRoute = require('./image.data.route');
 const videoRoute = require('./video.data.route');
+const analysisRoute = require('./analysis.routes');
 
 router.get('/status', (req, res) => res.send('OK'));
 router.use('/questionnaire', questionnaireRoute);
@@ -21,5 +22,6 @@ router.use('/ppg', ppgReadingDataRoute);
 router.use('/auth', authRoute);
 router.use('/image', imageRoute);
 router.use('/video', videoRoute);
+router.use('/analysis', analysisRoute);
 
 module.exports = router;

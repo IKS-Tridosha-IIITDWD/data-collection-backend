@@ -15,7 +15,7 @@ const ppgReadingDataSchema = new Schema({
       type: String,
     },
     manual_reading: {
-      type: String,
+      type: Number,
     },
   },
   indexFinger: {
@@ -26,7 +26,7 @@ const ppgReadingDataSchema = new Schema({
       type: String,
     },
     manual_reading: {
-      type: String,
+      type: Number,
     },
   },
   middleFinger: {
@@ -37,7 +37,7 @@ const ppgReadingDataSchema = new Schema({
       type: String,
     },
     manual_reading: {
-      type: String,
+      type: Number,
     },
   },
   ringFinger: {
@@ -48,7 +48,7 @@ const ppgReadingDataSchema = new Schema({
       type: String,
     },
     manual_reading: {
-      type: String,
+      type: Number,
     },
   },
   littleFinger: {
@@ -59,7 +59,7 @@ const ppgReadingDataSchema = new Schema({
       type: String,
     },
     manual_reading: {
-      type: String,
+      type: Number,
     },
   },
   thumb: {
@@ -70,7 +70,7 @@ const ppgReadingDataSchema = new Schema({
       type: String,
     },
     manual_reading: {
-      type: String,
+      type: Number,
     },
   },
 });
