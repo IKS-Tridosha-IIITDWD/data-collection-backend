@@ -4,7 +4,6 @@ const catchAsync = require('../utils/catchAsync');
 const createAnswer = catchAsync(async (req, res) => {
   const answer = req.body;
   const answerExists = await questionnaireTwoAnswerService.getAnswer(answer.userId);
-  console.log(answer);
   if (answerExists) {
     const updatedAnswer = await questionnaireTwoAnswerService.updateAnswer(answerExists.userId, answer);
     return res.status(200).json(updatedAnswer);
